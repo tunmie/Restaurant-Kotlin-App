@@ -2,8 +2,13 @@ package com.example.restaurantsapp
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Place
@@ -16,9 +21,12 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun RestaurantsScreen(){
-	Column {
-		dummyRestaurants.forEach {restaurant ->
-			RestaurantItem(restaurant)
+	LazyColumn(contentPadding = PaddingValues(
+		vertical = 8.dp,
+		horizontal = 8.dp
+	)) {
+		items(dummyRestaurants) {restaurant ->
+			RestaurantItem(item = restaurant)
 		}
 	}
 }
